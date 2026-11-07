@@ -1,3 +1,5 @@
+A customised fork of [mattpocock/skills](https://github.com/mattpocock/skills) (AlexDalt/skills), tuned to my own tastes and workflows.
+
 Skills are organized into bucket folders under `skills/`:
 
 - `engineering/`: daily code work
@@ -28,6 +30,14 @@ Every skill that dispatches a subagent says to start it with a fresh context win
 
 ## Agent skills
 
+### Issue tracker
+
+GitHub Issues in `AlexDalt/skills`. See `docs/agents/issue-tracker.md`.
+
 ### Triage labels
 
 Canonical names, unchanged. See `docs/agents/triage-labels.md`. Issues are judged against [`SCOPE.md`](./SCOPE.md).
+
+### Domain docs
+
+Single-context: root `GLOSSARY.md` and `.agents/adr/`. See `docs/agents/domain.md`.

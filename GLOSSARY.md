@@ -1,6 +1,6 @@
-# Matt Pocock Skills
+# Skills
 
-A collection of agent skills (slash commands and behaviors) loaded by Claude Code. Skills are organized into buckets and consumed by per-repo configuration emitted by `/setup`.
+A collection of agent skills (slash commands and behaviours) used across coding agents. This is a customised fork of [mattpocock/skills](https://github.com/mattpocock/skills), maintained in `AlexDalt/skills` and tuned to my own tastes and workflows. Skills are organized into buckets and configured per repo by the `/setup` skill.
 
 ## Language
 
