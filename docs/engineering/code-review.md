@@ -98,4 +98,4 @@ No. It diffs `<fixed-point>...HEAD`. The three-dot form measures from the merge-
 - [to-spec](https://aihero.dev/skills-to-spec) and [to-tickets](https://aihero.dev/skills-to-tickets) produce the document the Spec axis checks against, so a vague spec makes that axis vague.
 - [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) is the whole-codebase counterpart, because this skill only looks at one diff.
 
-[ask-matt](https://aihero.dev/skills-ask-matt) routes across the whole set when you are unsure which skill the situation wants.
+[auto-route](https://aihero.dev/skills-auto-route) routes across the whole set when you are unsure which skill the situation wants.

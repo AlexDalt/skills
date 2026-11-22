@@ -1,12 +1,12 @@
 ---
-name: ask-matt
-description: Ask which skill or flow fits your situation. A router over the skills in this repo.
+name: auto-route
+description: Route your current situation to the right skill or flow in this repo.
 disable-model-invocation: true
 ---
 
-# Ask Matt
+# Auto Route
 
-You don't remember every skill, so ask.
+Describe your situation and get the right route through the skills.
 
 Before stating what a skill does or recommending a step be skipped, read that skill's SKILL.md: the summaries here are for orientation only.
 

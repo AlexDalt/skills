@@ -12,7 +12,7 @@ Skills for daily code work.
 
 **User-invoked**
 
-- **`/ask-matt`**: [ask-matt](./skills/engineering/ask-matt/SKILL.md): ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.
+- **`/auto-route`**: [auto-route](./skills/engineering/auto-route/SKILL.md): route your current situation to the right skill or flow in this repo.
 - **`/grill-with-docs`**: [grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md): a relentless interview to sharpen a plan or design, which also builds the project's domain model (sharpening terminology and updating `GLOSSARY.md` and ADRs) as it goes.
 - **`/triage`**: [triage](./skills/engineering/triage/SKILL.md): move issues through a state machine of triage roles. For incoming work you didn't create: bug reports, feature requests, anything that arrives raw.
 - **`/improve-codebase-architecture`**: [improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md): scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
@@ -55,10 +55,10 @@ General workflow tools, not code-specific.
 
 ## Suggested workflows
 
-The flows below are grounded in the [`ask-matt`](./skills/engineering/ask-matt/SKILL.md) router.
+The flows below are grounded in the [`auto-route`](./skills/engineering/auto-route/SKILL.md) router.
 
 - **Configure a repo:** `/setup` once before its first engineering workflow.
-- **Choose a starting point:** `/ask-matt` with the situation you are facing.
+- **Choose a starting point:** `/auto-route` with the situation you are facing.
 - **Small change:** `/grill-with-docs` → `/implement`. Use `/tdd` directly for a concrete behaviour that only needs test-first implementation.
 - **Multi-session feature:** `/grill-with-docs` → `/to-spec` → `/to-tickets` → `/implement` per ticket, blockers first. Keep planning in one context through ticket creation; start fresh for each ticket.
 - **Parallel implementation:** `/to-spec` → `/to-tickets` → `/implement-spec` to work ready tickets on one integration branch.
