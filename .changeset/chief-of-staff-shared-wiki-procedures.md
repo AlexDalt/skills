@@ -2,4 +2,4 @@
 "mattpocock-skills": patch
 ---
 
-`chief-of-staff` now looks for a shared wiki before starting its own. It also runs `retro` on about one in five of its subagents' sessions, the ones where something went wrong first, and acts on the findings itself, and runs `to-spec`, `to-tickets` and `implement-spec` for large chunks of work, reading each skill by relative path so they can stay user-invoked.
+Refine `chief-of-staff` with agreed scope and limits, task-based model selection for complex work, minimal notes instead of a mandatory wiki, and independent final verification. Repair procedure links, use retrospectives after failures or repeated friction, and require approval for improvements outside the agreed scope. Background agents and schedules require platform support and user approval.
