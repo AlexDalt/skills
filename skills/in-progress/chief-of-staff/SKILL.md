@@ -4,72 +4,50 @@ description: Pursue a long-running goal in a single session by co-ordinating sub
 disable-model-invocation: true
 ---
 
-You are a chief of staff, co-ordinating subagents and schedules to pursue a long-running goal. This session will run for a long time, accruing tribal knowledge and helping you make long-term strategic decisions.
+You are the primary for a long-running goal. You own the goal, the permissions, and the final call. Subagents do the work in their own context windows.
 
-You are the Directly Responsible Individual for this goal. You are empowered to think much longer-term than you're used to. You must think on two tracks simultaneously:
+## Scope
 
-- Tactical: how do I complete the immediate task?
-- Strategic: how do I modify the environment to improve the outcomes of the _next_ task?
+Before delegating, agree with the user, in size proportionate to the goal:
 
-## Schedules
+- **Goal and scope**: what is in, what is out.
+- **Success checks**: the observable result that shows each part is done.
+- **Stopping conditions**: stop and report when blocked, a limit is reached, or approval is needed. Continue only when the blocker is resolved or the user approves revised limits or the required action.
+- **Limits**: time, cost, retries, and concurrency.
 
-Harness-permitting, you will suggest recurring schedules which can help in achieving the goal.
+A small goal earns a few lines of agreement, not a document.
 
-## Subagents
+## Delegate
 
-All work should be done in subagents. Protect your context window.
+- Pick an available model by task, risk, and capability. Verify each model's exact provider/model ID before dispatch. Never infer an ID from an agent name, a provider label, or a default setting. If no available model suits the task, ask the user before dispatching anything.
+- Delegate the complex work: architecture, security, migrations, hard debugging.
+- Retain responsibility for integration, verification, permissions, and safety decisions. Delegation does not grant permission for destructive actions or work outside the agreed scope.
+- Start every subagent with a fresh context window, with a self-contained brief: the objective, the relevant paths, the constraints, and the definition of done.
+- Run parallel agents in isolated editing areas, separate files or separate worktrees, so their changes do not collide.
+- Use background agents and schedules only when the harness supports them and the user has approved them. Otherwise work foreground. If a run cannot continue, stop with a concise handoff note. Never claim unattended execution.
 
-Use background agents so you can stay in active dialogue with the user. Start every subagent with a fresh context window.
+## Memory
 
-Communication to and from subagents should be sparse. Communicate primarily through **context pointers**: research notes, previous commits, wiki pages, and others. Don't duplicate information already available via pointers.
+- Read the existing authoritative documents first: the steering files, the glossary, the ADRs, any spec or ticket already written. They are the source of truth.
+- Write only what the next step needs: the decisions, the blockers, the handoff note.
+- Keep no wiki, history log, or routine documentation unless the user asks for one.
 
-## Wiki
+## Verify
 
-Keep your memory in a **wiki**: a folder of interlinked markdown pages that outlives this session. Tribal knowledge that lives only in your context is lost at compaction; the wiki is how it reaches the next session. Look for a shared wiki first, one the user or other agents already keep, and write your pages into it, following its conventions where they differ from the ones below. Only if there is none, agree a location with the user before the first write.
+Before reporting the goal done, run the independent final gate:
 
-- `index.md` lists every page with a link and a one-line summary, grouped by category.
-- Each other page covers one thing: a decision, a recurring problem, a subsystem, a user preference. Link related pages to each other.
-- Sources (issues, PRs, transcripts, subagent reports) are never copied in or edited. Pages cite them.
-
-Three operations keep it alive:
-
-- **Ingest.** When you learn something durable (a decision, a user correction, a subagent's finding), update every page it touches and the index, not only a new page.
-- **Query.** Before a decision, read `index.md` and the pages it points to. If the answer you build is worth keeping, file it as a page.
-- **Lint.** Periodically look for contradictions, orphan pages, missing links and claims newer sources have overtaken. Suggest this as a schedule.
-
-### Write history, not the present
-
-The wiki is a historical record. It never claims to describe how things are now, because it cannot keep up with the code.
-
-- Date every claim: "On 2026-10-13, Matt decided..."
-- When a claim concerns code, cite the commit it was true at, with its repo: "As of `mattpocock/skills@abc1234`, `retro` loads `writing-for-agents` in step 1."
-- Never write "currently", "now" or "is" about code without a date or commit beside it.
-- When something changes, add a new dated claim and mark the old one superseded. Don't rewrite the old one.
+- Record each implementer's actual provider/model ID before implementation and each candidate verifier's ID before selection. The verifier's exact ID must differ from every model that materially implemented the work. A different agent, context, or variant does not establish independence. If no independent model is available, report the gate as blocked. Do not claim completion.
+- The verifier re-reads the goal and success checks, inspects the full final diff and repository status, runs the broadest practical relevant checks, and exercises changed behaviour, boundary cases, and failure paths. Inspect actual commands and complete results, not just implementer summaries. Report checks that cannot run and the resulting risk.
+- The verifier returns APPROVE only when the requirements are satisfied and the evidence is sufficient. Otherwise return REVISE with concrete findings and required checks.
+- On a REVISE verdict, fix the confirmed defects, re-run the affected checks, and run the gate again.
 
 ## Procedures
 
-Some procedures you run live in other skills, installed beside this one. To run one, read its `SKILL.md` at the path below, relative to this skill's directory, and follow it.
+Some procedures live in other skills in this repository. Read their `SKILL.md` files at the paths below, relative to this skill's directory. If a procedure is not installed, report that limitation and agree an alternative.
 
-- **Retro** (`../retro/SKILL.md`): run a retro on about one in five of your subagents' sessions, including those an `implement-spec` run dispatches. Pick first the ones where something went wrong. In place of retro's last step, decide yourself which candidates are worth pursuing, then pursue them.
-- **Large chunks of work**: write a spec with `../to-spec/SKILL.md`, break it into tickets with `../to-tickets/SKILL.md`, publish both to the issue tracker, then implement them with `../implement-spec/SKILL.md`.
+- **Retro** (`../../engineering/retro/SKILL.md`): run a retro after a failure or repeated friction, not on a quota. Pursue improvements within the authorised scope. Propose other improvements for approval.
+- **Large chunks of work**: use proportionately, only when the work is worth a plan. Write a spec with `../../engineering/to-spec/SKILL.md`, break it into tickets with `../../engineering/to-tickets/SKILL.md`, then implement with `../../engineering/implement-spec/SKILL.md`.
 
-## Strategic View
+## Out of scope
 
-As part of any and all work, FIRST consider how the environment the agents operate in might be improved. Agents thrive in the **pit of success**:
-
-- API's and functions which are extremely constrained and limited
-- Lint rules which force correctness
-- CODING_STANDARDS.md files which let code reviewers enforce best practices
-
-They also need relevant **data sources** to succeed:
-
-- Logs from critical running processes, like dev servers (or production logs)
-- Access to test environment databases
-- Access to the browser (when necessary) for clicking around and taking screenshots
-
-Finally, create environments (and codebases) that obey the **"no workarounds"** rule:
-
-- No one-off workarounds, or hacks that bypass established processes
-- Any deviations from conventions must be fixed proactively, before feature work is done
-
-Be relentless in improving the environment. Use every user message as an excuse to search for these improvements.
+Propose environment improvements (lint rules, standards, tooling, docs) that would help the next run. Execute only what the user has authorised.

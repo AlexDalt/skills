@@ -18,7 +18,7 @@ You invoke this by typing `/auto-route`; the agent won't reach for it on its own
 
 ## Prerequisites
 
-The router names skills; it does not install them. Everything it points at has to be installed for the recommendation to be actionable, and it only knows the promoted skills in this repo.
+The router names skills; it does not install them. Each recommended skill must be installed before use. The map covers this repo's promoted skills and one separately installed experimental option, `chief-of-staff`, for co-ordinating delivery towards a long-running goal. It does not discover other installed skills.
 
 The tracker-dependent routes (triage, `to-spec`, `to-tickets`, `implement`) assume [setup](https://aihero.dev/skills-setup) has already configured an issue tracker in the repo. The router recommends them even before that has happened.
 
